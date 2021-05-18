@@ -31,11 +31,11 @@ const Form = ({ currentId, setCurrentId }) => {
   }, [post]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (currentId === 0) {
-      dispatch(createPost(postData));
+    if (currentId) {
+      dispatch(updatePost(currentId, postData));
       clear();
     } else {
-      dispatch(updatePost(currentId, postData));
+      dispatch(createPost(postData));
       clear();
     }
   };
