@@ -20,6 +20,10 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.get("/", (req, res) => {
+  res.send("Hello to memories api");
+});
+
 app.use("/posts", postRoutes);
 
 const CONNECTION_URL = process.env.CONNECTION_URL;
