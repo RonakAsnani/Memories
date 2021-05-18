@@ -5,7 +5,6 @@ import {
   DELETE,
   LIKE,
 } from "../constants/actionTypes";
-import { CardActions } from "@material-ui/core";
 
 export default (posts = [], action) => {
   switch (action.type) {
@@ -16,7 +15,7 @@ export default (posts = [], action) => {
     case UPDATE:
     case LIKE:
       return posts.map((post) =>
-        post._id == action.payload._id ? action.payload : post
+        post._id === action.payload._id ? action.payload : post
       );
     case DELETE:
       return posts.filter((post) => post._id !== action.payload);
