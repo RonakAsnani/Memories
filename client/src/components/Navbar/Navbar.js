@@ -5,6 +5,7 @@ import useStyles from "./styles";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LOGOUT } from "../../constants/actionTypes";
+import decode from "jwt-decode";
 // import {  } from "react-redux";
 
 const Navbar = () => {
@@ -23,6 +24,13 @@ const Navbar = () => {
 
   useEffect(() => {
     const token = user?.token;
+
+    if (token) {
+      const decodedToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        logout();
+      }
+    }
 
     ///JWT.....
 
