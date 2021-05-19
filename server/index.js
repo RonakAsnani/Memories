@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import postRoutes from "./routes/posts.js";
+import userRoutes from "./routes/users.js";
 
 const app = express();
 dotenv.config();
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/posts", postRoutes);
+app.use("/user", userRoutes);
 
 const CONNECTION_URL = process.env.CONNECTION_URL;
 
